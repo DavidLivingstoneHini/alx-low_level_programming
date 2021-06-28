@@ -24,4 +24,3 @@ void rev_string(char *s)
 		i++;
 	}
 }
-© 2021 GitHub, Inc.
