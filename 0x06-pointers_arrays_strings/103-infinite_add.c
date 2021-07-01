@@ -1,65 +1,40 @@
 #include "holberton.h"
-
+#include <stdio.h>
 /**
- * infinite_add - add 2 integers.
- * @n1: integer
- * @n2: integer
- * @r: buffer
- * size_r: size of r
- * Return: char
+ * infinite_add - Adds two numbers
+ * @n1: first input string
+ * @n2: second input string
+ * @r: pointer to buffer where result is stored
+ * @size_r: requested size for the buffer
+ * Return: pointer to buffer where result is stored
  */
-
-int _atoi(char *s)
-{
-	int sign = 1, resp = 0, firstNum;
-
-	for (firstNum = 0; !(s[firstNum] >= 48 && s[firstNum] <= 57); firstNum++)
-	{
-		if (s[firstNum] == '-')
-		{
-			sign *= -1;
-		}
-	}
-
-	for (int i = firstNum; s[i] >= 48 && s[i] <= 57; i++)
-	{
-		resp *= 10;
-		resp += (s[i] - 48);
-	}
-
-	return (sign * resp);
-}
-
-void int_to_string(int n)
-{
-int divisor = 1, i, resp;
-
-
-for (i = 0; n / divisor > 9; i++)
-{
-	divisor *= 10;
-}
-
-char str[i];
-
-for (int cmpt = 0; divisor >= 10; divisor /= 10, cmpt++)
-{
-	resp = n / divisor;
-	str[cmpt] = '0' + resp;
-	n = n - resp * divisor;
-}
-str[i] = ('0' + n);
-
-}
-
 
 char *infinite_add(char *n1, char *n2, char *r, int size_r)
 {
-    int sum, a, b;
-    a = _atoi(n1);
-    b = _atoi(n2);
-
-    sum = a + b;
-
-
+	/* i = iterator for n1 and n2; j = iterator for r; n = carry over number */
+	int i, j, n;
+	
+	i = j = n = 0;
+	/* if r[0] >= 10, set value to 1 & increase buffer size by 1*/
+	if ((n1[0] - '0') + (n2[0] - '0') >= 10)
+	{
+		r[0] = 1 + '0';
+		j = 1;
+	}
+	while (i < size_r && (n1[i] != '\0' || n2[i] != '\0' || r[j] != '\0'))
+	{
+		if ((n1[i + 1] - '0') + (n2[i + 1] - '0') >= 10)
+			n = 1;
+		else
+			n = 0;
+		r[j] = (n1[i] - '0') + (n2[i] - '0') + n;
+		r[j] = r[j] % 10 + '0';
+/*		printf("i: %d, n1: %d, n2: %d, j: %d, r: %d\n", i, n1[i] - '0', n2[i] - '0', j, r[j]- '0'); debug*/
+		i++;
+		j++;
+		if (n1[i] == '\0' || n2[i] == '\0')
+			r[j] = '\0';
+	}
+	r[j] = '\0';
+	return (r);
 }
