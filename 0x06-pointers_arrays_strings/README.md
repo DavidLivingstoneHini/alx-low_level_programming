@@ -14,6 +14,8 @@
 
 7-leet.c is a function that encodes a string into 1337.
 
+8-rot13.c is a function that encodes a string using rot13.
+
 holberton.h is the header file containing all the function prototypes.
 
 
