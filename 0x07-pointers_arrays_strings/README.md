@@ -14,7 +14,7 @@
 
 100-set_string.c is a function that sets the value of a pointer to a char.
 
-101-crackme_password is a file thaat contains the password for the crackme2 execuatble file.
+101-crackme_password is a file that contains the password for the crackme2 execuatble file.
 
 holberton.h is the header file with the functions prototypes.
 
