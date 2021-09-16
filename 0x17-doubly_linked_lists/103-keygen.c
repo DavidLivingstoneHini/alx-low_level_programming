@@ -51,4 +51,3 @@ int main(int __attribute__((__unused__)) argc, char *argv[])
 	printf("%s", password);
 	return (0);
 }
-© 2021 GitHub, Inc.
